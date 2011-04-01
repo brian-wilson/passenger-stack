@@ -1,7 +1,7 @@
 $:<< File.join(File.dirname(__FILE__), 'stack')
 
 # Require the stack base
-%w(essential scm ruby_enterprise memcached postgresql mysql apache image_management).each do |lib|
+%w(essential scm ruby_enterprise mysql apache image_management).each do |lib|
   require lib
 end
 
@@ -13,10 +13,8 @@ policy :passenger_stack, :roles => :app do
   requires :appserver               # Passenger
   requires :ruby_enterprise         # Ruby Enterprise edition
   requires :image_management        # ImageMagick
-  requires :database                # MySQL or Postgres
+  requires :database                # MySQL
   requires :scm                     # Git
-  # requires :memcached               # Memcached
-  # requires :libmemcached            # Libmemcached
 end
 
 deployment do
